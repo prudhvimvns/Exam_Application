@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <style>
+        .left {
+            background-color: white;
+        }
+        
+        .right {
+            background-color: white;
+            width: 50%;
+            padding-left: 60px;
+            float: left;
+        }
+        
+        body {
+            background-color:  rgb(223, 217, 217);
+        }
+        
+        .navbar {
+            width: 100%;
+            height: 16%;
+            position: relative;
+            top: 0%;
+            left: 0%;
+            background-color: white;
+        }
+        
+        .Text_align_containers {
+            text-align: center;
+        }
+        
+        .container11 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            padding-left: 10px;
+            padding-top: 40px;
+            background-color: rgba(104, 58, 231);
+            color:white;
+            margin: 0;
+            top: 20%;
+            left: 5%;
+            border-radius: 20px;
+        }
+        
+        .container12 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            padding-left: 10px;
+            padding-top: 40px;
+            background-color: rgba(104, 58, 231);
+             color:white;
+            margin: 0;
+            top: 20%;
+            left: 55%;
+            border-radius: 20px;
+        }
+        
+        .container21 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            background-color: rgba(104, 58, 231);
+             color:white;
+            margin: 0;
+            padding-left: 10px;
+            padding-top: 40px;
+            top: 55%;
+            left: 5%;
+            border-radius: 20px;
+        }
+        
+        .container22 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            padding-left: 10px;
+            padding-top: 40px;
+            background-color: rgba(104, 58, 231);
+             color:white;
+            margin: 0;
+            top: 55%;
+            left: 55%;
+            border-radius: 20px;
+        }
+        
+        .container11:hover {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container11:hover:after */ {
+            opacity: 1;
+        }
+        
+        .container12:hover {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container12:hover:after */ {
+            opacity: 1;
+        }
+        
+        .container21:hover {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container21:hover:after */ {
+            opacity: 1;
+        }
+        
+        .container22:hover {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container22:hover:after */ {
+            opacity: 1;
+        }
+        
+        .submitButton {
+            top: 60%;
+            left: 60%;
+            margin: 0;
+            position: absolute;
+            font-weight:bold;
+            background-color: white;
+            color:rgba(104, 58, 231) ;
+            border-radius: 10px;
+            /* background-color: orange; */
+            border: none;
+            padding: 13px 32px;
+            text-decoration: none;
+            /* margin: 4px 2px; */
+            cursor: pointer;
+        }
+        
+        .logo {
+            top: 0%;
+            left: 100%;
+        }
+        
+        .navbar_items {
+            float: right;
+            position: absolute;
+            text-align: right;
+            color: rgb(31, 32, 30);
+            top: 20px;
+            right: 20px;
+            padding: 16px;
+            padding-right: 56px;
+            ;
+        }
+        
+        .icon-bar a:hover {
+            background-color: yellow;
+        }
+        /* 
+.active {
+  background-color: #4CAF50;
+} */
+        /* .active {
+  background-color: #4CAF50;
+} */
+    </style>
+</head>
+
+<body>
+
+    <div class="logo">
+        <p class="navbar">
+            <a href="https://www.abjayon.com/"><img src="https://www.abjayon.com/wp-content/uploads/2020/08/news10-1.jpg" style="width:150px;height:80px;" alt="AbjayonImage"></a>
+        </p>
+        <div class="navbar_items">
+            <a class="active" href="dashboard.html"><i class="fa fa-home"></i></a>
+            <a class="active" href="dashboard.html">Home  </a>
+            <a class="active" href="Login1.jsp"><i class="fa fa-user"></i></a>
+            <a class="disable" href="Login1.jsp">Logout</a>
+
+        </div>
+
+    </div>
+
+    <form action="dashboardServlet">
+        <div class="container11">
+            <h4>
+                <p class="font-weight-bold">Associate Consultant Exam </p>
+            </h4>
+            <h6 class="font-italic">Click submit to enter test..</h6>
+            <button id="front_end_dev_button" class="submitButton" value="ACE" name="selected">Submit</button>
+        </div>
+
+        <div class="container12">
+            <h4>
+                <p class="font-weight-bold">Front End Developer Exam </p>
+            </h4>
+            <h6 class="font-italic">Click submit to enter test...</h6>
+            <button id="back_end_dev_button" class="submitButton" value="FEDE" name="selected">Submit</button>
+        </div>
+
+        <div class="container21">
+            <h4>
+                <p class="font-weight-bold">Oracle Utilities</p>
+            </h4>
+            <h6 class="font-italic">Click submit to enter test..</h6>
+            <button id="oracle_utilities_button" class="submitButton" value="OUE" name="selected">Submit</button>
+        </div>
+
+        <div class="container22">
+            <h4>
+                <p class="font-weight-bold">Aptitude Test </p>
+            </h4>
+            <h6 class="font-italic">Click submit to enter test..</h6>
+            <button id="front_end_dev_button" class="submitButton" value="ATE" name="selected">Submit</button>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+
+<title>Challenge</title>
+</head>
+
+<style>
+.submitbutton{
+	background-color:blue;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.back-image{
+	background-color:#C0C0C0;
+	background-image:url("back.jpg");
+	background-position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin:auto;
+	border:auto;
+}
+
+.widget{
+padding: 15px 32px;
+}
+h4{
+padding: 15px 32px;
+}
+.clock1{
+	float:right;
+	padding-top:0px;
+	padding-right:20px;
+	color: red;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+</style>
+
+
+<body class ="back-image">
+	<div>
+		<div>
+			<h4></h4>
+		</div>
+	</div>
+	
+<form>
+	<div class="widget">
+	
+			<div class="clock1">
+				<div id="clockdiv"></div>
+					<script>
+						
+						// 10 minutes from now
+						var time_in_minutes = 21;
+						var current_time = Date.parse(new Date());
+						var deadline = new Date(current_time + time_in_minutes*60*1000);
+
+
+						function time_remaining(endtime){
+							var t = Date.parse(endtime) - Date.parse(new Date());
+							var seconds = Math.floor( (t/1000) % 60 );
+							var minutes = Math.floor( (t/1000/60) % 60 );
+							var hours = Math.floor( (t/(1000*60*60)) % 24 );
+							var days = Math.floor( t/(1000*60*60*24) );
+							return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
+						}
+						function run_clock(id,endtime){
+							var clock = document.getElementById(id);
+							function update_clock(){
+								var t = time_remaining(endtime);
+								clock.innerHTML = 'Time : '+t.minutes+'mins :'+t.seconds+'secs';
+								//if(t.total<=0){ clearInterval(timeinterval); }
+								if (t.minutes==0 && t.seconds==0){window.location="finalpage.html";}
+							}
+							update_clock(); // run function once at first to avoid delay
+							var timeinterval = setInterval(update_clock,1000);
+						}
+						run_clock('clockdiv',deadline);
+					</script>			
+			</div>
+	
+	
+		
+<div class="se-widget" data-widget="JX2sYis78C"></div>
+		<div style="position:center">
+			<input type="submit" class="submitbutton" formaction="finalpage.html">
+		</div>
+	</div>
+
+		
+</form>
+
+</body>
+
+<script>
+(function(d, s, id){
+  SE_BASE = "147e568a.widgets.sphere-engine.com";
+  SE_HTTPS = true;
+  SE = window.SE || (window.SE = []);
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = (SE_HTTPS ? "https" : "http") + "://" + SE_BASE + "/static/sdk/sdk.min.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "sphere-engine-jssdk"));</script>
+
+</html>

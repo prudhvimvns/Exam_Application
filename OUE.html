@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Utilities-Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .teststatus {
+            color: orangered;
+            background-color: #1e4a79;
+        }
+        
+        .stopwatch {
+            padding-right: 20px;
+            color: red;
+            float: right;
+            top: 0;
+            padding-top: 0px;
+        }
+        
+        .timer {
+            color: orangered;
+            text-align: right;
+            float: right;
+            top: 0;
+            padding-top: 0px;
+            ;
+            padding-right: 50px;
+        }
+        
+        .examtitle {
+            color: #1e4a79;
+        }
+        
+        .exampadding {
+            padding-left: 20px;
+            padding-top: 30px;
+        }
+        
+        .exambutton {
+            top: 30%;
+            left: 40%;
+            margin: 0;
+            position: absolute;
+            background-color: #f34e40;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            padding: 13px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .dummy {
+            text-align: right;
+            padding-right: 20px;
+            ;
+        }
+    </style>
+    <script>
+        var pos = 0,
+            test, test_status, question, AnsA, AnsB, AnsC, AnsD, choice, choices, fans, correct = 0,
+            starttime, endtime;
+        // starttime=get.Time();
+
+        //         document.getElementById('timer').innerHTML =
+        //   003 + ":" + 20;
+        // startTimer();
+
+        // function startTimer() {
+        //   var presentTime = document.getElementById('timer').innerHTML;
+        //   var timeArray = presentTime.split(/[:]+/);
+        //   var m = timeArray[0];
+        //   var s = checkSecond((timeArray[1] - 1));
+        //   if(s==59){m=m-1}
+        //   //if(m<0){alert('timer completed')}
+
+        //   document.getElementById('timer').innerHTML =
+        //     m + ":" + s;
+        //   console.log(m)
+        //   setTimeout(startTimer, 1000);
+        // }
+
+        // function checkSecond(sec) {
+        //   if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+        //   if (sec < 0) {sec = "59"};
+        //   return sec;
+        // }
+
+        var question_list = [
+            ["In dynamic data replication which of the following database is used for oracle:", " DBMS", " DBA", " DBMA", " None of these", "B"],
+            ["When a ROLLBACK statement is issued to the database, the transaction has ended, which of the following is true.", " all work done by the transaction is undone as if it had not been issued", "  Any locks acquired by the transaction are released", " all work done by the transaction is done.", " A&B both", "D"],
+            ["In oracle we can create SNAPSHOT LOG for[DBA].", " complex snapshot", " destroyable snapsho", "Simple snapshot", " A&B both", "C"],
+            ["By the help of PL/SQL expression reconstructed using?", " HTP", " HTTP", " FTP", " A&B both", "D"]
+
+        ];
+
+        function screen(x) {
+            return document.getElementById(x);
+        }
+
+        function renderquestion() {
+
+            test = screen("test");
+            if (pos >= question_list.length) {
+                // export{correct};
+                // test.innerHTML="<button action='dummy2.html' name='finalbutton'>fsub</button>";
+                test.innerHTML = "<h2>you got " + correct + " of " + question_list.length + " Questions.</h2>";
+                // test.innerHTML+="<h4>Your result is stored</h4>";
+                // test.innerHTML+="<h4>Thank you for giving exam</h4>";
+                // test.innerHTML+="<h2>you can Logout</h2><br>"; 
+                test.innerHTML += "<button class='exambutton' onclick='nextpage()' required>Submit test</button>";
+                // screen(test_status).innerHTML="<h2>Your test is completed!!!</h2>";
+                pos = 0;
+                correct = 0;
+                return false;
+            } else {
+                screen("test_status").innerHTML = "Question " + (pos + 1) + " of " + question_list.length;
+
+
+                question = question_list[pos][0];
+                AnsA = question_list[pos][1];
+                AnsB = question_list[pos][2];
+                AnsC = question_list[pos][3];
+                AnsD = question_list[pos][4];
+                // var d = new Date();
+                // var n = d.getMinutes();
+                // var s = d.getSeconds();
+                // var h = d.getHours();
+
+
+                // time.innerHTML+="<h5>Exam started at: "+h+"h:"+n+"m:"+s+"s</h5>";
+                // time.innerHTML+="<h6>Exam will end in 10 Seconds</h6>";
+                test.innerHTML = "<h3>" + question + "</h3>";
+
+
+                test.innerHTML += "<input type='radio', required name='choices', value='A'>  " + AnsA + "<br>";
+                test.innerHTML += "<input type='radio', required name='choices', value='B'>  " + AnsB + "<br>";
+                test.innerHTML += "<input type='radio', required name='choices', value='C'>  " + AnsC + "<br>";
+                test.innerHTML += "<input type='radio', required name='choices', value='D'>  " + AnsD + "<br><br><br><br>";
+                test.innerHTML += "<button class='exambutton' onclick='checkanswer()' required>Submit Answer</button>";
+            }
+
+        }
+
+
+        function checkanswer() {
+            choices = document.getElementsByName("choices");
+            for (var i = 0; i < choices.length; i++) {
+                if (choices[i].checked) {
+                    fans = choices[i].value;
+                }
+
+            }
+            if (fans == question_list[pos][5]) {
+                correct++;
+            }
+            pos++;
+            renderquestion();
+        }
+
+        function nextpage() {
+            window.location = "finalpage.html"
+        }
+
+        var timeout = setTimeout(function() {
+                window.location = 'Dashboard.html'
+            },
+            60000);
+
+        window.addEventListener("load", renderquestion, false);
+    </script>
+</head>
+
+<body>
+    <div class="exampadding ">
+        <div>
+            <h3 class="teststatus" id="test_status"></h3>
+
+        </div>
+        <div id="clockdiv" class="stopwatch"></div>
+        <script>
+            // 10 minutes from now
+            var time_in_minutes = 1;
+            var current_time = Date.parse(new Date());
+            var deadline = new Date(current_time + time_in_minutes * 60 * 1000);
+
+
+
+
+            function time_remaining(endtime) {
+                var t = Date.parse(endtime) - Date.parse(new Date());
+                var seconds = Math.floor((t / 1000) % 60);
+                var minutes = Math.floor((t / 1000 / 60) % 60);
+                var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                return {
+                    'total': t,
+                    'days': days,
+                    'hours': hours,
+                    'minutes': minutes,
+                    'seconds': seconds
+                };
+            }
+
+            function run_clock(id, endtime) {
+                var clock = document.getElementById(id);
+
+                function update_clock() {
+                    var t = time_remaining(endtime);
+                    clock.innerHTML = 'Time remaining : ' + t.minutes + 'min :' + t.seconds + 'sec';
+                    //if(t.total<=0){ clearInterval(timeinterval); }
+                    if (t.minutes == 0 && t.seconds == 0) {
+                        window.location = "finalpage.html";
+                    }
+                }
+                update_clock(); // run function once at first to avoid delay
+                var timeinterval = setInterval(update_clock, 1000);
+            }
+            run_clock('clockdiv', deadline);
+        </script>
+        <div id="test"></div>
+
+
+
+    </div>
+</body>
+
+</html>

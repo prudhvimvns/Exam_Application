@@ -1,0 +1,133 @@
+<!Doctype html>
+<html>
+<head>
+<link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+<style>
+.header{
+background-image:url("https://www.abjayon.com/wp-content/uploads/2020/08/news10_banner.jpg");
+}
+.header2{
+color:black;
+margin-left:28px;
+}
+.hover{
+background-color:#45a049;
+}
+
+form{
+    text-align:left;
+    margin-top:100px;
+    margin-left:200px;
+    cursor: pointer;
+}
+.icon 
+{ 
+    padding: 10px; 
+    min-width: 50px; 
+ } 
+          
+.input-field 
+{ 
+      width: 25%; 
+      padding: 10px; 
+      text-align: center; 
+ }
+.input-icons i 
+{ 
+     position: absolute; 
+} 
+          
+.input-icons 
+{ 
+     width: 100%; 
+     margin-bottom: 10px; 
+     margin-left: 20px;
+}
+</style>
+<script type="text/javascript">
+function verifypassword(form){
+    password1= form.password1.value;
+    password2= form.password2.value;
+    if(password1!=password2){
+        alert("Password did not match"); 
+        document.getElementById("p1").style.borderColor="red";
+    }else{
+        document.getElementById("p1").style.borderColor="green";
+    }
+}
+/*
+var x = false;
+function validateForm() {
+
+    //then, we attach the event listened to the field after the submit, if it has not been done so far
+    if(!x) {
+        document.getElementById("p1").onkeyup = checkPhone;
+        x = true;
+    }
+
+    return checkpassword();
+}*/
+function checkpassword(){
+    var passwordlen = document.forms["myform"]["p1"].value;
+    if(passwordlen.length<6){
+        document.getElementById("p1").style.borderColor="red";
+        document.getElementById("gettext").innerHTML="Character should be greater than 6";
+    }else{
+        document.getElementById("p1").style.borderColor="green";
+        document.getElementById("gettext").innerHTML="";
+    }
+}
+
+</script>
+</head>
+<body class="header">
+<div>
+<form  name="myform" onsubmit="return verifypassword(this)" action="succesful.html" method="post">
+<h2 class="header2">Student Registration Form</h2>
+<div class="input-icons">
+<i class="fa fa-user icon"></i>
+<input class="input-field" type="text" id="firstname" name="firstname"  placeholder="Firstname" pattern="[a-zA-Z].{6,}" title="should contain only aplhabets min 7 characters"required><br><br>
+<i class="fa fa-user icon"></i>
+<input class="input-field" type="text" id="lastname" name="lastname" placeholder="Lastname" pattern="[a-zA-Z].{6,}" title="should contain only aplhabets with min 7 charcters" required><br><br>
+<i class="fa fa-envelope icon"></i>
+<input class="input-field" type="mail" name="email" placeholder="Email" required><br><br>
+<!--  
+<i class="fa fa-lock icon"></i>
+<input class="input-field" type="password" id="p1" name="password1" placeholder="Password" oninput="checkpassword()"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"   title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br>
+<div style="margin-left: 50px;" id="gettext"> </div>
+<i class="fa fa-lock icon"></i>
+<input class="input-field" type="password"  name="password2" placeholder="Confirm Password"   title="should match with password"><br><br>
+-->
+
+<label>Gender</label>
+<label>
+<input type="radio" name="Name">Male</label>
+</label>
+<input type="radio" name="Name">Female</label><br><br>	
+<label>Course:</label>
+<select required>
+<option disabled selected value> -- select an option -- </option>
+<option value="BE">BE</option>
+<option value="B.Tech">B.tech</option>
+</select><br><br>
+<label>Branch:</label>
+<select required>
+<option disabled selected value> -- select an option -- </option>
+<option value="IT">IT</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+<option value="MECH">MECH</option>
+</select><br><br>
+<label>CGPA:</label>
+<input type="text" name="CGPA"><br><br>
+<label>Resume</label>
+<input type="file" name="Resume"><br><br>
+<button>submit</button>
+</div>
+</form>
+</div>
+</body>
+</html>

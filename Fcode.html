@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Website</title>
+    <style>
+        .left {
+            background-color: white;
+            width: 50%;
+            padding-left: 100px;
+            float: left;
+        }
+        
+        .right {
+            background-color: white;
+            width: 50%;
+            padding-left: 60px;
+            float: left;
+        }
+        
+        .rightmatter {
+            text-align: center;
+        }
+        
+        body {
+            margin: 0%;
+        }
+        
+        .header {
+            padding-top: 70px;
+        }
+        
+        .signdes {
+            padding-top: 5px;
+        }
+        
+        .spanclass {
+            color: orange;
+        }
+        
+        .form {
+            padding-top: 80px;
+            padding-right: 0px;
+        }
+        
+        .check {
+            padding-top: 20px;
+        }
+        
+        .submit {
+            border-radius: 10px;
+            background-color: orange;
+            border: none;
+            color: white;
+            padding: 13px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        #inputfield {
+            border-collapse: separate;
+            border-spacing: 15px;
+        }
+        
+        .codecontainer {
+            width: 95%;
+            height: 100%;
+            background-color: aqua;
+            padding-left: 50px;
+        }
+        
+        .timerdata {
+            text-align: center;
+            text-color: blue;
+        }
+        
+        img {
+            padding-top: 130px;
+            padding-right: 30px;
+            align-self: flex-start;
+            width: 700px;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        textarea {
+            resize: none;
+            border: 10px;
+            border-color: black;
+        }
+        	.c{float:right;
+	padding-top:0px;
+	padding-right:20px;
+	color: red;
+	font-weight: bold;
+	font-size: 17px;
+}
+    </style>
+    <script type="text/javascript">
+        function validate() {
+            if (document.getElementById("txtarea_consolidation").value == "") {
+                var text = "";
+                document.getElementById("txtarea_consolidation").focus();
+            } else {
+                var text = document.getElementById("txtarea_consolidation").value;
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <form onsubmit="return validate();" action="finalpage.html" >
+        <div>
+            <div class="c" id="clockdiv"></div>
+            <script>
+                // 10 minutes from now
+                var time_in_minutes = 1;
+                var current_time = Date.parse(new Date());
+                var deadline = new Date(current_time + time_in_minutes * 60 * 1000);
+
+
+                function time_remaining(endtime) {
+                    var t = Date.parse(endtime) - Date.parse(new Date());
+                    var seconds = Math.floor((t / 1000) % 60);
+                    var minutes = Math.floor((t / 1000 / 60) % 60);
+                    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                    return {
+                        'total': t,
+                        'days': days,
+                        'hours': hours,
+                        'minutes': minutes,
+                        'seconds': seconds
+                    };
+                }
+
+                function run_clock(id, endtime) {
+                    var clock = document.getElementById(id);
+
+                    function update_clock() {
+                        var t = time_remaining(endtime);
+                        clock.innerHTML = 'Time : '+t.minutes+'mins :'+t.seconds+'secs ';
+                        //if(t.total<=0){ clearInterval(timeinterval); }
+                        	if (t.minutes==0 && t.seconds==0){window.location="finalpage.html";}
+                    }
+                    update_clock(); // run function once at first to avoid delay
+                    var timeinterval = setInterval(update_clock, 1000);
+                }
+                run_clock('clockdiv', deadline);
+            </script>
+        </div>
+
+        <div class="row">
+
+            <div class="column left ">
+                <div class="container">
+
+                    <div>
+                        <h1 class="header"><b>Front End Challenge</b></h1>
+                        <p class="signdes">Try to replicate the shown registration form.<br>You have 20 minutes for the test.</p>
+                    </div>
+
+
+                    <div class="codecontainer">
+                        <!-- <h1>jdfhsh</h1> -->
+                        <div><br></div>
+
+                        <textarea id="txtarea_consolidation" rows="13" cols="50" warp="hard"></textarea><br />
+                    </div>
+
+
+
+
+                    <div>
+                        <br> <button onclick="javascript:validate();" class="submit">Submit</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="column right">
+                <img src="https://jqueryform.github.io/posts/video/form-html.jpg" alt="Cloning_image.">
+            </div>
+
+
+
+        </div>
+    </form>
+</body>
+
+</html>

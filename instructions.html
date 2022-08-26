@@ -1,0 +1,51 @@
+<html>
+
+<head>
+
+    <title>
+        Instructions
+    </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="instructions.css">
+   
+</head>
+
+<body>
+    <div id="main">
+        <form action="instructionServlet" method="POST">
+            <div id="right">
+                <h2>Instructions:</h2>
+                <ul>
+
+                    <li>After clicking the Enter test button you will be redirected to a page which contains 5 multiple choice questions, you need to complete them in 60 seconds.</li>
+                    <li>The MCQ section will be madatory for every role.</li>
+                    <li> Depends on role you have opted for, you might be redirected to a CODING section and you need to complete the assesment on time.</li>
+                    <li>Student should not have to switch the tabs in between after starting the exam.</li>
+                    <li>Student should not copy code from other websites as we have plagarism algorithms to check the matching %.</li>
+                    <li>Student should complete the examination within the time given.</li>
+                    <li>If any student undergo malpractice, he/she will not be selected for further rounds.</li>
+                </ul>
+                <input type="checkbox" id="agree" required>I accept to all the conditions.<br><br>
+                <div id="pic">
+
+                    <label for="files" class="btn">Click a picture of yours <i  class="fa">&#xf030;</i></label>
+                    <input type="file" onchange="return Validation()" accept="image/png, image/jpeg, image/jpg" style="visibility:hidden;" id="files" required>
+                    
+
+                </div>
+
+                <input class="button" type="submit" name="enter" style="float: right;" value="Start Test &#x2794; ">
+
+
+        </form>
+        </div>
+        <div id="abjayon">
+            <img src="https://www.abjayon.com/wp-content/uploads/2020/08/news10-1.jpg" alt="Abjayon image" width="450px" height="310px">
+        </div>
+    </div>
+</body>
+
+</html>
